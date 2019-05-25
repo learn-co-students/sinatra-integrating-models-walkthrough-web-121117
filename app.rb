@@ -7,8 +7,8 @@ class App < Sinatra::Base
   end
 
   post '/' do
-    text_from_user = params[:user_text]
-
+    @analyzed_text = TextAnalyzer.new(params[:user_text])
+    @biggest_count = @analyzed_text.biggest_count
     erb :results
   end
 end
